@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "TrueVisionDesktopApp.h"
-#include "WindowFactory.h"
+#include "ChoiceWindow.h"
 #include <FL/Fl.H>
 
 #define MAX_LOADSTRING 100
@@ -26,7 +26,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
 
 
-	Fl_Window *window = Create();
+	Fl_Window *window = ChoiceWindow::Instance();
 	window->show();
 
     return Fl::run();
