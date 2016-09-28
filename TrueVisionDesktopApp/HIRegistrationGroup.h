@@ -7,10 +7,12 @@ using namespace utility;
 using namespace pplx;
 using namespace std;
 
+enum MessageType { Info, Warning, Error };
+
 class HIRegistrationGroup : public Fl_Group
 {
 public:
-	HIRegistrationGroup(int x,int y,const char* t);
+	HIRegistrationGroup(int x, int y, const char* t);
 	~HIRegistrationGroup();
 
 private:
@@ -25,6 +27,7 @@ private:
 	Fl_Button* registerButton;
 
 	string messageResult;
+	MessageType messageType;
 
 	static void registerButtonCallback(Fl_Widget *widgent, void* data);
 
@@ -32,5 +35,6 @@ private:
 	bool validateInputs();
 	string_t getQueryString();
 	task<void> getRequestTask();
+	void showMessage();
 };
 

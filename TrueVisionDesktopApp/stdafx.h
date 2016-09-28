@@ -30,5 +30,6 @@
 #include "HIRegistrationGroup.h"
 #include "ChoiceWindow.h"
 #include "HIRegistrationGroup.h"
+#include "HIValidationGroup.h"
 
 #include <string>

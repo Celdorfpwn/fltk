@@ -44,7 +44,7 @@ void HIRegistrationGroup::registerButtonCallback(Fl_Widget *widgent, void* data)
 	if (group->validateInputs())
 	{
 		group->getRequestTask().wait();
-		fl_message(group->messageResult.c_str());
+		group->showMessage();
 	}
 }
 
@@ -99,15 +99,17 @@ task<void> HIRegistrationGroup::getRequestTask()
 		if (response.status_code() == status_codes::OK)
 		{
 			this->messageResult = "Email sent";
-			//return response.extract_json();
+			this->messageType = Info;
 		}
 		else if (response.status_code() == status_codes::BadRequest)
 		{
-			this->messageResult = "invalid";
+			this->messageType = Warning;
+			return response.extract_json();
 		}
 		else if (response.status_code() == status_codes::NotFound)
 		{
-			this->messageResult = "not found";
+			this->messageResult = "Error occurred";
+			this->messageType = Error;
 		}
 
 		return create_task([] { return json::value(); });
@@ -116,5 +118,17 @@ task<void> HIRegistrationGroup::getRequestTask()
 	{
 		if (jsonValue.is_null())
 			return;
+
+		this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("Message")).serialize());
 	});
+}
+
+void HIRegistrationGroup::showMessage()
+{
+	switch (this->messageType)
+	{
+	case Info: fl_message(this->messageResult.c_str()); break;
+	case Warning: fl_alert(this->messageResult.c_str()); break;
+	case Error: fl_alert(messageResult.c_str()); break;
+	}
 }

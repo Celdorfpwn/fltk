@@ -7,8 +7,6 @@ public:
 	static HardwareIndependentWindow* Instance();
 	~HardwareIndependentWindow();
 
-	void addRegistrationForm();
-
 private:
 	HardwareIndependentWindow();
 
@@ -16,7 +14,16 @@ private:
 	Fl_Button* validationButton;
 	Fl_Button* verifyButton;
 
+	Fl_Group* currentGroup;
+
 	static HardwareIndependentWindow* instance;
 
 	void initializeComponent();
+	void clearGroups();
+
+	void addRegistrationGroup();
+	void addValidationGroup();
+
+	static void registrationButtonCallback(Fl_Widget *widgent, void* data);
+	static void validationButtonCallback(Fl_Widget *widgent, void* data);
 };

@@ -24,7 +24,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
 
-	Fl::scheme("gtk+");
+	Fl::set_color(FL_BACKGROUND_COLOR, FL_BLACK);
+	Fl::set_color(FL_BACKGROUND2_COLOR, FL_BLACK);
+	Fl::set_color(FL_FOREGROUND_COLOR, 8, 178, 246);
+	Fl::set_color(FL_SELECTION_COLOR, 51, 153, 255);
+	Fl::reload_scheme();
+
 	Fl_Window *window = ChoiceWindow::Instance();
 	window->show();
 
