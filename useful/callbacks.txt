@@ -1,0 +1,19 @@
+class MyClass .. {
+
+    // NORMAL CALLBACK METHOD
+    void Button_CB2(Fl_Widget *w) {
+      ..your code here can access other members/methods of the class..
+    }
+
+    // STATIC CALLBACK METHOD
+    static void Button_CB(Fl_Widget *w, void *data) {
+        MyClass *o = (MyClass*)data;
+        o->Button_CB2(w);
+    }
+
+public:
+    MyClass(..) {
+        Fl_Button *b = new Fl_Button(..);
+        b->callback(Button_CB, (void*)this);
+    }
+};

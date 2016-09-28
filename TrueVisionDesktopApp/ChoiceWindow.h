@@ -1,7 +1,5 @@
 #pragma once
 #include "stdafx.h"
-#include <FL/Fl_Window.H>
-#include <FL/Fl_Button.H>
 
 
 class ChoiceWindow : public Fl_Window
@@ -16,6 +14,9 @@ private:
 	Fl_Button* hdProductButton;
 	Fl_Button* hiProductButton;
 	static ChoiceWindow* instance;
+
+	static void hdProductButtonCallback(Fl_Widget *widget, void*);
+	static void hiProductButtonCallback(Fl_Widget *widget, void*);
 
 	void initializeComponent();
 };

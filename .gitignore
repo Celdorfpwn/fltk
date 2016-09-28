@@ -3,6 +3,7 @@ obj/
 Debug/
 Release/
 packages/
+ipch/
 *.user
 *.aps
 *.pch

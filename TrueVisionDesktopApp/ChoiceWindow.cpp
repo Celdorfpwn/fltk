@@ -2,14 +2,13 @@
 #include "ChoiceWindow.h"
 #include "HardwareIndependentWindow.h"
 
-void hdProductButtonCallback(Fl_Widget *widget, void*);
-void hiProductButtonCallback(Fl_Widget *widget, void*);
+
 
 
 ChoiceWindow* ChoiceWindow::instance;
 
 
-ChoiceWindow::ChoiceWindow(): Fl_Window(300,100,"Choose Product Type")
+ChoiceWindow::ChoiceWindow() : Fl_Window(300, 100, "Choose Product Type")
 {
 	this->initializeComponent();
 }
@@ -39,13 +38,13 @@ void ChoiceWindow::initializeComponent()
 	this->end();
 }
 
-void hdProductButtonCallback(Fl_Widget *widget, void*)
+void ChoiceWindow::hdProductButtonCallback(Fl_Widget *widget, void*)
 {
 
 }
-void hiProductButtonCallback(Fl_Widget *widget, void*)
+void ChoiceWindow::hiProductButtonCallback(Fl_Widget *widget, void*)
 {
-	Fl_Window *window = new HardwareIndependentWindow();
+	Fl_Window *window = HardwareIndependentWindow::Instance();
 	window->show();
 }
 

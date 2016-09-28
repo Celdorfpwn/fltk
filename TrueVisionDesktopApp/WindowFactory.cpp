@@ -93,6 +93,7 @@ pplx::task<void> GetAll()
 		http_client client(L"http://localhost:28652");
 
 		uri_builder builder = uri_builder(U("api"));
+		builder.append(U("test"));
 		builder.append(url);
 
 		return client.request(methods::GET, builder.to_string());

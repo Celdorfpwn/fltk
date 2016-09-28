@@ -1,12 +1,22 @@
 #pragma once
 #include "stdafx.h"
-#include <FL/Fl_Window.H>
 
 class HardwareIndependentWindow : public Fl_Window
 {
 public:
-	HardwareIndependentWindow();
+	static HardwareIndependentWindow* Instance();
 	~HardwareIndependentWindow();
-private:
 
+	void addRegistrationForm();
+
+private:
+	HardwareIndependentWindow();
+
+	Fl_Button* registrationButton;
+	Fl_Button* validationButton;
+	Fl_Button* verifyButton;
+
+	static HardwareIndependentWindow* instance;
+
+	void initializeComponent();
 };

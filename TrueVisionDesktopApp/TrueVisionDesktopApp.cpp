@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "TrueVisionDesktopApp.h"
 #include "ChoiceWindow.h"
-#include <FL/Fl.H>
 
 #define MAX_LOADSTRING 100
 
@@ -25,7 +24,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
 
-
+	Fl::scheme("gtk+");
 	Fl_Window *window = ChoiceWindow::Instance();
 	window->show();
 

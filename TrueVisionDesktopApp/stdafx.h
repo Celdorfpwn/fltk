@@ -19,3 +19,16 @@
 
 
 // TODO: reference additional headers your program requires here
+
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Box.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl.H>
+#include <FL/Fl_Input.H>
+#include <FL/fl_ask.H>
+
+#include "HIRegistrationGroup.h"
+#include "ChoiceWindow.h"
+#include "HIRegistrationGroup.h"
+
+#include <string>
