@@ -3,6 +3,7 @@
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include "Enums.h"
+#include "LicenseFileManager.h"
 
 
 class HIValidationGroup : public Fl_Group

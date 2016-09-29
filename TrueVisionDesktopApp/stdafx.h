@@ -33,3 +33,5 @@
 #include "HIValidationGroup.h"
 
 #include <string>
+
+static string_t SERVER_BASE_URL = L"http://localhost:28652/";

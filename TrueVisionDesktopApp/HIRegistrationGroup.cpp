@@ -83,7 +83,7 @@ task<void> HIRegistrationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(L"http://localhost:53086/");
+		http_client client(SERVER_BASE_URL);
 
 		uri_builder builder = uri_builder(U("api"));
 		builder.append(U("external"));
@@ -91,7 +91,6 @@ task<void> HIRegistrationGroup::getRequestTask()
 		builder.append_query(U("productId"), conversions::to_string_t(string(this->productIdInput->value())), true);
 		builder.append_query(U("username"), conversions::to_string_t(string(this->usernameInput->value())), true);
 		builder.append_query(U("email"), conversions::to_string_t(string(this->emailInput->value())), true);
-
 		return client.request(methods::GET, builder.to_string());
 	}).then([&](http_response response)
 	{
@@ -105,7 +104,7 @@ task<void> HIRegistrationGroup::getRequestTask()
 			this->messageType = Warning;
 			return response.extract_json();
 		}
-		else if (response.status_code() == status_codes::NotFound)
+		else
 		{
 			this->messageResult = "Error occurred";
 			this->messageType = Error;
@@ -118,13 +117,9 @@ task<void> HIRegistrationGroup::getRequestTask()
 		if (jsonValue.is_null())
 			return;
 
-		if (jsonValue.has_field(conversions::to_string_t("message")))
+		if (jsonValue.has_field(L"message"))
 		{
-			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("message")).serialize());
-		}
-		else if (jsonValue.has_field(conversions::to_string_t("Message")))
-		{
-			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("Message")).serialize());
+			this->messageResult = conversions::to_utf8string(jsonValue.at(L"message").serialize());
 		}
 	});
 }

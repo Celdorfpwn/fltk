@@ -61,7 +61,7 @@ task<void> HIValidationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(L"http://localhost:53086/");
+		http_client client(SERVER_BASE_URL);
 		uri_builder builder = uri_builder(U("api"));
 		builder.append(U("external"));
 		builder.append(U("validateemailedlicense"));
@@ -75,34 +75,36 @@ task<void> HIValidationGroup::getRequestTask()
 	{
 		if (response.status_code() == status_codes::OK)
 		{
-			this->messageResult = "Email sent";
 			this->messageType = Info;
+			return response.extract_json();
 		}
 		else if (response.status_code() == status_codes::BadRequest)
 		{
 			this->messageType = Warning;
 			return response.extract_json();
 		}
-		else if (response.status_code() == status_codes::NotFound)
+		else
 		{
 			this->messageResult = "Error occurred";
 			this->messageType = Error;
+			return create_task([] { return json::value(); });
 		}
-
-		return create_task([] { return json::value(); });
 
 	}).then([&](json::value jsonValue)
 	{
 		if (jsonValue.is_null())
 			return;
-
-		if (jsonValue.has_field(conversions::to_string_t("message")))
+		if (this->messageType == Warning)
 		{
-			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("message")).serialize());
+			if (jsonValue.has_field(L"message"))
+			{
+				this->messageResult = conversions::to_utf8string(jsonValue.at(L"message").serialize());
+			}
 		}
-		else if (jsonValue.has_field(conversions::to_string_t("Message")))
+		else if(this->messageType == Info)
 		{
-			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("Message")).serialize());
+			LicenseFileManager::writeLicenseFile(jsonValue);
+			this->messageResult = "Validation Key is valid";
 		}
 	});
 }
