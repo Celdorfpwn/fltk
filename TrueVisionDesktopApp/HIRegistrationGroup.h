@@ -2,12 +2,12 @@
 #include "stdafx.h"
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
+#include "Enums.h"
 
 using namespace utility;
 using namespace pplx;
 using namespace std;
 
-enum MessageType { Info, Warning, Error };
 
 class HIRegistrationGroup : public Fl_Group
 {
@@ -33,7 +33,6 @@ private:
 
 	void initializeComponent();
 	bool validateInputs();
-	string_t getQueryString();
 	task<void> getRequestTask();
 	void showMessage();
 };

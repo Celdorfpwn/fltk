@@ -1,5 +1,9 @@
 #pragma once
 #include "stdafx.h"
+#include <cpprest/http_client.h>
+#include <cpprest/filestream.h>
+#include "Enums.h"
+
 
 class HIValidationGroup : public Fl_Group
 {
@@ -19,5 +23,13 @@ private:
 
 	Fl_Button* validateButton;
 
+	string messageResult;
+	MessageType messageType;
+
+	static void validateButtonCallback(Fl_Widget *widget, void* data);
+
 	void initializeComponent();
+	bool validateInputs();
+	task<void> getRequestTask();
+	void showMessage();
 };

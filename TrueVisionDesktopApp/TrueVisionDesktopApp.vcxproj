@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChoiceWindow.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="HardwareIndependentWindow.h" />
     <ClInclude Include="HIRegistrationGroup.h" />
     <ClInclude Include="HIValidationGroup.h" />

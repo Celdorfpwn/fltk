@@ -43,8 +43,15 @@ void HIRegistrationGroup::registerButtonCallback(Fl_Widget *widgent, void* data)
 	HIRegistrationGroup *group = (HIRegistrationGroup*)data;
 	if (group->validateInputs())
 	{
-		group->getRequestTask().wait();
-		group->showMessage();
+		try
+		{
+			group->getRequestTask().wait();
+			group->showMessage();
+		}
+		catch (const std::exception&)
+		{
+			fl_alert("Error occured");
+		}
 	}
 }
 
@@ -72,26 +79,18 @@ bool HIRegistrationGroup::validateInputs()
 	return true;
 }
 
-string_t HIRegistrationGroup::getQueryString()
-{
-	return string_t(conversions::to_string_t("?productId=") +
-		conversions::to_string_t(string(this->productIdInput->value())) +
-		conversions::to_string_t("&username=") +
-		conversions::to_string_t(string(this->usernameInput->value())) +
-		conversions::to_string_t(string("&email=")) +
-		(conversions::to_string_t(string(this->emailInput->value()))));
-}
-
 task<void> HIRegistrationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(L"http://localhost:28652");
+		http_client client(L"http://localhost:53086/");
 
-		client.request(methods::GET);
 		uri_builder builder = uri_builder(U("api"));
-		builder.append(U("test"));
-		builder.append(this->getQueryString());
+		builder.append(U("external"));
+		builder.append(U("licenseproduct"));
+		builder.append_query(U("productId"), conversions::to_string_t(string(this->productIdInput->value())), true);
+		builder.append_query(U("username"), conversions::to_string_t(string(this->usernameInput->value())), true);
+		builder.append_query(U("email"), conversions::to_string_t(string(this->emailInput->value())), true);
 
 		return client.request(methods::GET, builder.to_string());
 	}).then([&](http_response response)
@@ -119,7 +118,14 @@ task<void> HIRegistrationGroup::getRequestTask()
 		if (jsonValue.is_null())
 			return;
 
-		this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("Message")).serialize());
+		if (jsonValue.has_field(conversions::to_string_t("message")))
+		{
+			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("message")).serialize());
+		}
+		else if (jsonValue.has_field(conversions::to_string_t("Message")))
+		{
+			this->messageResult = conversions::to_utf8string(jsonValue.at(conversions::to_string_t("Message")).serialize());
+		}
 	});
 }
 

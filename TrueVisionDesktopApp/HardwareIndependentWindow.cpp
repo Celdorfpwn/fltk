@@ -37,6 +37,7 @@ void HardwareIndependentWindow::clearGroups()
 	if (this->currentGroup)
 	{
 		this->remove(this->currentGroup);
+		this->currentGroup->~Fl_Group();
 		this->redraw();
 	}
 }
