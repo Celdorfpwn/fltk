@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChoiceWindow.h" />
+    <ClInclude Include="Configuration.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="HardwareIndependentWindow.h" />
     <ClInclude Include="HIRegistrationGroup.h" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceWindow.cpp" />
+    <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="HardwareIndependentWindow.cpp" />
     <ClCompile Include="HIRegistrationGroup.cpp" />
     <ClCompile Include="HIValidationGroup.cpp" />
@@ -180,6 +182,9 @@
     <Image Include="TrueVisionDesktopApp.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Configuration.cfg">
+      <FileType>Text</FileType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

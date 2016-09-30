@@ -34,5 +34,3 @@
 #include "HIVerifyWindow.h"
 
 #include <string>
-
-static string_t SERVER_BASE_URL = L"https://localhost:44346";

@@ -32,7 +32,7 @@ void HIRegistrationGroup::initializeComponent()
 	this->productIdLabel = new Fl_Box(this->x() + 10, this->y() + 260, 50, 30, "Product Id:");
 	this->productIdLabel->align(FL_ALIGN_POSITION_MASK);
 	this->productIdInput = new Fl_Input(this->x() + 10, this->y() + 140, this->w(), 30);
-
+	this->productIdInput->value(Configuration::Instance()->getDefaultProductId().c_str());
 	this->registerButton = new Fl_Button(this->x() + 150, this->y() + 190, 100, 30, "Register");
 	this->registerButton->callback(registerButtonCallback, (void*)this);
 	this->end();
@@ -83,7 +83,7 @@ task<void> HIRegistrationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(SERVER_BASE_URL);
+		http_client client(conversions::to_string_t(Configuration::Instance()->getServerUrl()));
 
 		uri_builder builder = uri_builder(U("api"));
 		builder.append(U("external"));

@@ -4,6 +4,7 @@
 #include <cpprest/filestream.h>
 #include "Enums.h"
 #include "LicenseFileManager.h"
+#include "Configuration.h"
 
 
 class HIValidationGroup : public Fl_Group

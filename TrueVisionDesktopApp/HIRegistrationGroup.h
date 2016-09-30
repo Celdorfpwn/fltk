@@ -3,6 +3,7 @@
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include "Enums.h"
+#include "Configuration.h"
 
 using namespace utility;
 using namespace pplx;
