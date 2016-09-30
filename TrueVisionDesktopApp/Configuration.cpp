@@ -11,6 +11,7 @@ Configuration::Configuration()
 	ifstream file("Configuration.cfg");
 	file >> this->server_url;
 	file >> this->default_productId;
+	file >> this->default_hardwareId;
 	file.close();
 }
 
@@ -23,6 +24,12 @@ string Configuration::getServerUrl()
 {
 	return this->server_url;
 }
+
+string Configuration::getDefaultHardwareId()
+{
+	return this->default_hardwareId;
+}
+
 
 Configuration* Configuration::Instance()
 {

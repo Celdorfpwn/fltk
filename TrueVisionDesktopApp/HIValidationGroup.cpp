@@ -27,11 +27,14 @@ void HIValidationGroup::initializeComponent()
 	this->hardwareKeyLabel = new Fl_Box(this->x() + 10, this->y() + 140, 50, 30, "Hardware Key:");
 	this->hardwareKeyLabel->align(FL_ALIGN_POSITION_MASK);
 	this->hardwareKeyInput = new Fl_Input(this->x() + 10, this->y() + 80, this->w(), 30);
+	this->hardwareKeyInput->value(Configuration::Instance()->getDefaultHardwareId().c_str());
+	this->hardwareKeyInput->deactivate();
 
 	this->productIdLabel = new Fl_Box(this->x() + 10, this->y() + 260, 50, 30, "Product Id:");
 	this->productIdLabel->align(FL_ALIGN_POSITION_MASK);
 	this->productIdInput = new Fl_Input(this->x() + 10, this->y() + 140, this->w(), 30);
 	this->productIdInput->value(Configuration::Instance()->getDefaultProductId().c_str());
+	this->productIdInput->deactivate();
 
 	this->validateButton = new Fl_Button(this->x() + 150, this->y() + 190, 100, 30, "Validate");
 	this->validateButton->callback(HIValidationGroup::validateButtonCallback, (void*)this);
@@ -142,3 +145,5 @@ void HIValidationGroup::showMessage()
 	case Error: fl_alert(messageResult.c_str()); break;
 	}
 }
+
+
