@@ -24,11 +24,13 @@ HardwareIndependentWindow* HardwareIndependentWindow::Instance()
 
 void HardwareIndependentWindow::initializeComponent()
 {
-	this->registrationButton = new Fl_Button(10, 10, 150, 30, "Registration");
+	this->registrationButton = new Fl_Button(30, 10, 100, 30, "Register");
 	this->registrationButton->callback(HardwareIndependentWindow::registrationButtonCallback, (void*)this);
-	this->validationButton = new Fl_Button(170, 10, 150, 30, "Validation");
+	this->validationButton = new Fl_Button(140, 10, 100, 30, "Validate");
 	this->validationButton->callback(HardwareIndependentWindow::validationButtonCallback, (void*)this);
-	this->verifyButton = new Fl_Button(330, 10, 150, 30, "Verify");
+	this->verifyButton = new Fl_Button(250, 10, 100, 30, "Verify");
+	this->verifyButton->callback(HardwareIndependentWindow::verifyButtonCallack, (void*)this);
+	this->offlineButton = new Fl_Button(360, 10, 100, 30, "Offline");
 	this->end();
 }
 
@@ -60,6 +62,15 @@ void HardwareIndependentWindow::addValidationGroup()
 	this->redraw();
 }
 
+void HardwareIndependentWindow::addVerifyGroup()
+{
+	this->clearGroups();
+	this->begin();
+	this->currentGroup = new HIVerifyWinow(50, 100, "Verify Form");
+	this->end();
+	this->redraw();
+}
+
 
 void HardwareIndependentWindow::registrationButtonCallback(Fl_Widget *widgent, void* data)
 {
@@ -71,4 +82,10 @@ void HardwareIndependentWindow::validationButtonCallback(Fl_Widget *widget, void
 {
 	HardwareIndependentWindow* window = (HardwareIndependentWindow*)data;
 	window->addValidationGroup();
+}
+
+void HardwareIndependentWindow::verifyButtonCallack(Fl_Widget *widget, void* data)
+{
+	HardwareIndependentWindow* window = (HardwareIndependentWindow*)data;
+	window->addVerifyGroup();
 }

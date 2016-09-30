@@ -31,7 +31,8 @@
 #include "ChoiceWindow.h"
 #include "HIRegistrationGroup.h"
 #include "HIValidationGroup.h"
+#include "HIVerifyWindow.h"
 
 #include <string>
 
-static string_t SERVER_BASE_URL = L"http://localhost:28652/";
+static string_t SERVER_BASE_URL = L"https://localhost:44346";

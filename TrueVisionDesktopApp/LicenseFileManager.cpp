@@ -16,10 +16,14 @@ namespace LicenseFileManager
 	{
 		fstream file;
 		file.open(path, fstream::out);
-		writeProperty(L"Product", L"productName", file, json);
-		writeProperty(L"UserId", L"userId", file, json);
+
+		file << "[" + to_utf8string(json.at(L"productName").as_string()) + "]\n";
+
+		writeProperty(L"UserID", L"userId", file, json);
 		writeProperty(L"Key", L"key", file, json);
-		writeProperty(L"HardwareKey", L"hardwareKey", file, json);
+		writeProperty(L"HW", L"hardwareKey", file, json);
+
+		file << "[License]\n";
 
 		json::array list = json.at(L"licenses").as_array();
 

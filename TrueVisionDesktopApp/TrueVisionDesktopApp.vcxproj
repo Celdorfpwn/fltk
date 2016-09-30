@@ -150,6 +150,7 @@
     <ClInclude Include="HardwareIndependentWindow.h" />
     <ClInclude Include="HIRegistrationGroup.h" />
     <ClInclude Include="HIValidationGroup.h" />
+    <ClInclude Include="HIVerifyWindow.h" />
     <ClInclude Include="LicenseFileManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="HardwareIndependentWindow.cpp" />
     <ClCompile Include="HIRegistrationGroup.cpp" />
     <ClCompile Include="HIValidationGroup.cpp" />
+    <ClCompile Include="HIVerifyWindow.cpp" />
     <ClCompile Include="LicenseFileManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
