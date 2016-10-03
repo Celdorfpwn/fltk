@@ -32,5 +32,6 @@
 #include "HIRegistrationGroup.h"
 #include "HIValidationGroup.h"
 #include "HIVerifyGroup.h"
+#include "HIOfflineValidationGroup.h"
 
 #include <string>

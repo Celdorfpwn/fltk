@@ -31,6 +31,7 @@ void HardwareIndependentWindow::initializeComponent()
 	this->verifyButton = new Fl_Button(250, 10, 100, 30, "Verify");
 	this->verifyButton->callback(HardwareIndependentWindow::verifyButtonCallack, (void*)this);
 	this->offlineButton = new Fl_Button(360, 10, 100, 30, "Offline");
+	this->offlineButton->callback(HardwareIndependentWindow::offlineButtonCallback, (void*)this);
 	this->end();
 }
 
@@ -71,6 +72,15 @@ void HardwareIndependentWindow::addVerifyGroup()
 	this->redraw();
 }
 
+void HardwareIndependentWindow::addOfflineGroup()
+{
+	this->clearGroups();
+	this->begin();
+	this->currentGroup = new HIOfflineValidationGroup(50, 100, "Offline Form");
+	this->end();
+	this->redraw();
+}
+
 
 void HardwareIndependentWindow::registrationButtonCallback(Fl_Widget *widgent, void* data)
 {
@@ -88,4 +98,10 @@ void HardwareIndependentWindow::verifyButtonCallack(Fl_Widget *widget, void* dat
 {
 	HardwareIndependentWindow* window = (HardwareIndependentWindow*)data;
 	window->addVerifyGroup();
+}
+
+void HardwareIndependentWindow::offlineButtonCallback(Fl_Widget *widget, void* data)
+{
+	HardwareIndependentWindow* window = (HardwareIndependentWindow*)data;
+	window->addOfflineGroup();
 }

@@ -17,5 +17,7 @@ private:
 	string userInfoId;
 	string licenseId;
 	string licenseKey;
+	string hardwareCertificate;
+	string key;
 	static HILicenseFileReader* instance;
 };

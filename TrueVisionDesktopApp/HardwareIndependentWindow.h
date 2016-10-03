@@ -25,8 +25,10 @@ private:
 	void addRegistrationGroup();
 	void addValidationGroup();
 	void addVerifyGroup();
+	void addOfflineGroup();
 
 	static void registrationButtonCallback(Fl_Widget *widgent, void* data);
 	static void validationButtonCallback(Fl_Widget *widget, void* data);
-	static void verifyButtonCallack(Fl_Widget *widget, void * data);
+	static void verifyButtonCallack(Fl_Widget *widget, void* data);
+	static void offlineButtonCallback(Fl_Widget *widget, void* data);
 };

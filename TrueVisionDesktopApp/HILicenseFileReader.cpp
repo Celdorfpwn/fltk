@@ -15,8 +15,8 @@ HILicenseFileReader::HILicenseFileReader()
 	string row;
 	getline(file, row);
 	file >> row >> row >> this->userInfoId;
-	getline(file, row);
-	getline(file, row);
+	file >> row >> row >> this->key;
+	file >> row >> row >> this->hardwareCertificate;
 	getline(file, row);
 	file >> row;
 	file >> this->licenseId >> row >> this->licenseKey;
