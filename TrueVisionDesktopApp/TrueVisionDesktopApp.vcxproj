@@ -86,7 +86,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -149,9 +149,10 @@
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="HardwareIndependentWindow.h" />
+    <ClInclude Include="HILicenseFileReader.h" />
     <ClInclude Include="HIRegistrationGroup.h" />
     <ClInclude Include="HIValidationGroup.h" />
-    <ClInclude Include="HIVerifyWindow.h" />
+    <ClInclude Include="HIVerifyGroup.h" />
     <ClInclude Include="LicenseFileManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -162,9 +163,10 @@
     <ClCompile Include="ChoiceWindow.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="HardwareIndependentWindow.cpp" />
+    <ClCompile Include="HILicenseFileReader.cpp" />
     <ClCompile Include="HIRegistrationGroup.cpp" />
     <ClCompile Include="HIValidationGroup.cpp" />
-    <ClCompile Include="HIVerifyWindow.cpp" />
+    <ClCompile Include="HIVerifyGroup.cpp" />
     <ClCompile Include="LicenseFileManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -191,6 +193,7 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets" Condition="Exists('..\packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" />
     <Import Project="..\packages\fltk.1.3.3.33\build\native\fltk.targets" Condition="Exists('..\packages\fltk.1.3.3.33\build\native\fltk.targets')" />
+    <Import Project="..\packages\boost.1.61.0.0\build\native\boost.targets" Condition="Exists('..\packages\boost.1.61.0.0\build\native\boost.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -198,5 +201,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\cpprestsdk.v140.windesktop.msvcstl.dyn.rt-dyn.targets'))" />
     <Error Condition="!Exists('..\packages\fltk.1.3.3.33\build\native\fltk.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\fltk.1.3.3.33\build\native\fltk.targets'))" />
+    <Error Condition="!Exists('..\packages\boost.1.61.0.0\build\native\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.61.0.0\build\native\boost.targets'))" />
   </Target>
 </Project>

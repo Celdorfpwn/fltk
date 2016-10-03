@@ -66,7 +66,7 @@ void HardwareIndependentWindow::addVerifyGroup()
 {
 	this->clearGroups();
 	this->begin();
-	this->currentGroup = new HIVerifyWinow(50, 100, "Verify Form");
+	this->currentGroup = new HIVerifyGroup(50, 100, "Verify Form");
 	this->end();
 	this->redraw();
 }

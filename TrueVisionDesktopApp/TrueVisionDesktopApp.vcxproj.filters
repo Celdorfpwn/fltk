@@ -48,10 +48,13 @@
     <ClInclude Include="LicenseFileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HIVerifyWindow.h">
+    <ClInclude Include="Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration.h">
+    <ClInclude Include="HILicenseFileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HIVerifyGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,10 +80,13 @@
     <ClCompile Include="LicenseFileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HIVerifyWindow.cpp">
+    <ClCompile Include="Configuration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration.cpp">
+    <ClCompile Include="HILicenseFileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HIVerifyGroup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
