@@ -11,6 +11,8 @@ public:
 	string getUserInfoId();
 	string getLicenseId();
 	string getLicenseKey();
+	string getHardwareCertificate();
+	string getKey();
 	static HILicenseFileReader* Instance();
 private:
 	HILicenseFileReader();

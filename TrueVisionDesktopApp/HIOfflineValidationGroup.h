@@ -15,6 +15,7 @@ private:
 	string licenseId;
 	string licenseKey;
 
+	bool areValuesValid();
 	static void offlineButtonCallback(Fl_Widget* widget, void* data);
 };
 
