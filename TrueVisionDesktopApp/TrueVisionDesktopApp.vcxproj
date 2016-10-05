@@ -145,10 +145,15 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseGroup.h" />
     <ClInclude Include="ChoiceWindow.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="HardwareDependent.h" />
+    <ClInclude Include="HardwareDependentWindow.h" />
+    <ClInclude Include="HardwareIndependent.h" />
     <ClInclude Include="HardwareIndependentWindow.h" />
+    <ClInclude Include="HDRegisterGroup.h" />
     <ClInclude Include="HILicenseFileReader.h" />
     <ClInclude Include="HIRegistrationGroup.h" />
     <ClInclude Include="HIValidationGroup.h" />
@@ -161,9 +166,12 @@
     <ClInclude Include="TrueVisionDesktopApp.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseGroup.cpp" />
     <ClCompile Include="ChoiceWindow.cpp" />
     <ClCompile Include="Configuration.cpp" />
+    <ClCompile Include="HardwareDependentWindow.cpp" />
     <ClCompile Include="HardwareIndependentWindow.cpp" />
+    <ClCompile Include="HDRegisterGroup.cpp" />
     <ClCompile Include="HILicenseFileReader.cpp" />
     <ClCompile Include="HIRegistrationGroup.cpp" />
     <ClCompile Include="HIValidationGroup.cpp" />

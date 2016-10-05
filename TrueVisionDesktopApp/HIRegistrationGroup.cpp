@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "HIRegistrationGroup.h"
 
 
 using namespace std;
@@ -10,7 +9,7 @@ using namespace web::http::client;
 using namespace concurrency::streams;
 using namespace pplx;
 
-HIRegistrationGroup::HIRegistrationGroup(int x, int y, const char* t) : Fl_Group(x, y, 400, 300, t)
+HIRegistrationGroup::HIRegistrationGroup(int x, int y, const char* t) : BaseGroup(x, y, t)
 {
 	this->initializeComponent();
 }
@@ -21,23 +20,12 @@ HIRegistrationGroup::~HIRegistrationGroup()
 
 void HIRegistrationGroup::initializeComponent()
 {
-	this->usernameLabel = new Fl_Box(this->x() + 10, this->y() + 20, 50, 30, "Username:");
-	this->usernameLabel->align(FL_ALIGN_POSITION_MASK);
-	this->usernameInput = new Fl_Input(this->x() + 10, this->y() + 20, this->w(), 30);
 
-	this->emailLabel = new Fl_Box(this->x() + 10, this->y() + 140, 50, 30, "Email:");
-	this->emailLabel->align(FL_ALIGN_POSITION_MASK);
-	this->emailInput = new Fl_Input(this->x() + 10, this->y() + 80, this->w(), 30);
+	this->usernameInput = BaseGroup::createInput(NULL, "Username:", true);
+	this->emailInput = BaseGroup::createInput(NULL, "Email:", true);
+	this->productIdInput = BaseGroup::createInput(Configuration::Instance()->HIProductId().c_str(), "Product Id:", false);
 
-	this->productIdLabel = new Fl_Box(this->x() + 10, this->y() + 260, 50, 30, "Product Id:");
-	this->productIdLabel->align(FL_ALIGN_POSITION_MASK);
-
-	this->productIdInput = new Fl_Input(this->x() + 10, this->y() + 140, this->w(), 30);
-	this->productIdInput->deactivate();
-	this->productIdInput->value(Configuration::Instance()->getDefaultProductId().c_str());
-	this->productIdInput->deactivate();
-
-	this->registerButton = new Fl_Button(this->x() + 150, this->y() + 190, 100, 30, "Register");
+	this->registerButton = BaseGroup::createCenterButton("Register");
 	this->registerButton->callback(registerButtonCallback, (void*)this);
 	this->end();
 }
@@ -87,7 +75,7 @@ task<void> HIRegistrationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(conversions::to_string_t(Configuration::Instance()->getServerUrl()));
+		http_client client(conversions::to_string_t(Configuration::Instance()->ServerUrl()));
 
 		uri_builder builder = uri_builder(U("api"));
 		builder.append(U("external"));

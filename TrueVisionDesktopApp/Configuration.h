@@ -8,9 +8,9 @@ class Configuration
 {
 public:
 	~Configuration();
-	string getServerUrl();
-	string getDefaultProductId();
-	string getDefaultHardwareId();
+	string ServerUrl();
+	string HIProductId();
+	string HIHardwareId();
 	static Configuration* Instance();
 private:
 	Configuration();

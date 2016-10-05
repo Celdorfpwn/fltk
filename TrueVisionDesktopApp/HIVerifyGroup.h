@@ -7,17 +7,12 @@
 #include <cpprest/filestream.h>
 #include "Enums.h"
 
-class HIVerifyGroup : public Fl_Group
+class HIVerifyGroup : public BaseGroup
 {
 public:
 	HIVerifyGroup(int x, int y, const char* t);
 	~HIVerifyGroup ();
 private:
-	Fl_Box* userInfoIdLabel;
-	Fl_Box* hardwareKeyLabel;
-	Fl_Box* productIdLabel;
-	Fl_Box* licenseIdLabel;
-	Fl_Box* licenseKeyLabel;
 
 	Fl_Input* userInfoInput;
 	Fl_Input* hardwareKeyInput;
@@ -33,7 +28,6 @@ private:
 	static void verifyButtonCallback(Fl_Widget *widget, void* data);
 
 	void initializeComponent();
-	void initializeInputsValues();
 	task<void> getRequestTask();
 	void showMessage();
 };

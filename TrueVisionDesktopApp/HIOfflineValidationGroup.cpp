@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "HIOfflineValidationGroup.h"
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 #include <openssl/rsa.h>
@@ -7,7 +6,6 @@
 #include <openssl/sha.h>
 
 
-RSA * createRSA();
 
 HIOfflineValidationGroup::HIOfflineValidationGroup(int x, int y, const char* t) : Fl_Group(x, y, 400, 300, t)
 {

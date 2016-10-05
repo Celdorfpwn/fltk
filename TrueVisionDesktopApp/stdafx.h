@@ -26,12 +26,10 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Input.H>
 #include <FL/fl_ask.H>
+#include "BaseGroup.h"
 
-#include "HIRegistrationGroup.h"
-#include "ChoiceWindow.h"
-#include "HIRegistrationGroup.h"
-#include "HIValidationGroup.h"
-#include "HIVerifyGroup.h"
-#include "HIOfflineValidationGroup.h"
+#include "HardwareIndependent.h"
+#include "HardwareDependent.h"
+
 
 #include <string>

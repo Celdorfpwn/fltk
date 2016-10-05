@@ -9,13 +9,13 @@ void writeProperty(string_t name, string_t propertyName, fstream& file,json::val
 namespace LicenseFileManager
 {
 
-	const char *path = "lic.file";
+	const char *hipath = "hilic.file";
 
 
-	void writeLicenseFile(json::value  json)
+	void writeHiLicenseFile(json::value  json)
 	{
 		fstream file;
-		file.open(path, fstream::out);
+		file.open(hipath, fstream::out);
 
 		file << "[" + to_utf8string(json.at(L"productName").as_string()) + "]\n";
 

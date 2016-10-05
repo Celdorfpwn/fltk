@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "HILicenseFileReader.h"
 #include <boost/algorithm/string.hpp>
 
 
@@ -11,7 +10,7 @@ HILicenseFileReader* HILicenseFileReader::instance;
 
 HILicenseFileReader::HILicenseFileReader()
 {
-	ifstream file("lic.file");
+	ifstream file("hilic.file");
 	string row;
 	getline(file, row);
 	file >> row >> row >> this->userInfoId;

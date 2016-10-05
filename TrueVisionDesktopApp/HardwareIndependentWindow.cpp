@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "HardwareIndependentWindow.h"
 
 HardwareIndependentWindow* HardwareIndependentWindow::instance;
 

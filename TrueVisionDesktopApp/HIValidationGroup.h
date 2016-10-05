@@ -7,17 +7,13 @@
 #include "Configuration.h"
 
 
-class HIValidationGroup : public Fl_Group
+class HIValidationGroup : public BaseGroup
 {
 public:
 	HIValidationGroup(int x, int y, const char* t);
 	~HIValidationGroup();
 
 private:
-
-	Fl_Box* activationKeyLabel;
-	Fl_Box* hardwareKeyLabel;
-	Fl_Box* productIdLabel;
 
 	Fl_Input* activationKeyInput;
 	Fl_Input* hardwareKeyInput;

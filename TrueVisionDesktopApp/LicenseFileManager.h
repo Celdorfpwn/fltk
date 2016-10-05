@@ -7,5 +7,5 @@ using namespace web::json;
 
 namespace LicenseFileManager
 {
-	void writeLicenseFile(value json);
+	void writeHiLicenseFile(value json);
 }

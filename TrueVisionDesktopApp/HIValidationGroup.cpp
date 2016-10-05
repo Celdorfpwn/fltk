@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "HIValidationGroup.h"
 
 using namespace std;
 using namespace utility;
@@ -9,7 +8,7 @@ using namespace web::http::client;
 using namespace concurrency::streams;
 using namespace pplx;
 
-HIValidationGroup::HIValidationGroup(int x, int y, const char* t): Fl_Group(x, y, 400, 300, t)
+HIValidationGroup::HIValidationGroup(int x, int y, const char* t) : BaseGroup(x, y, t)
 {
 	this->initializeComponent();
 }
@@ -20,26 +19,12 @@ HIValidationGroup::~HIValidationGroup()
 
 void HIValidationGroup::initializeComponent()
 {
-	this->activationKeyLabel = new Fl_Box(this->x() + 10, this->y() + 20, 50, 30, "Activation Key:");
-	this->activationKeyLabel->align(FL_ALIGN_POSITION_MASK);
-	this->activationKeyInput = new Fl_Input(this->x() + 10, this->y() + 20, this->w(), 30);
-
-	this->hardwareKeyLabel = new Fl_Box(this->x() + 10, this->y() + 140, 50, 30, "Hardware Key:");
-	this->hardwareKeyLabel->align(FL_ALIGN_POSITION_MASK);
-	this->hardwareKeyInput = new Fl_Input(this->x() + 10, this->y() + 80, this->w(), 30);
-	this->hardwareKeyInput->value(Configuration::Instance()->getDefaultHardwareId().c_str());
-	this->hardwareKeyInput->deactivate();
-
-	this->productIdLabel = new Fl_Box(this->x() + 10, this->y() + 260, 50, 30, "Product Id:");
-	this->productIdLabel->align(FL_ALIGN_POSITION_MASK);
-	this->productIdInput = new Fl_Input(this->x() + 10, this->y() + 140, this->w(), 30);
-	this->productIdInput->value(Configuration::Instance()->getDefaultProductId().c_str());
-	this->productIdInput->deactivate();
-
-	this->validateButton = new Fl_Button(this->x() + 150, this->y() + 190, 100, 30, "Validate");
+	this->activationKeyInput = BaseGroup::createInput(NULL, "Activation Key:", true);
+	this->hardwareKeyInput = BaseGroup::createInput(Configuration::Instance()->HIHardwareId().c_str(), "Hardware Key:", false);
+	this->productIdInput = BaseGroup::createInput(Configuration::Instance()->HIProductId().c_str(), "Product Id:", false);
+	this->validateButton = BaseGroup::createCenterButton("Validate");
 	this->validateButton->callback(HIValidationGroup::validateButtonCallback, (void*)this);
 	this->end();
-
 }
 
 void HIValidationGroup::validateButtonCallback(Fl_Widget* widget, void* data)
@@ -57,14 +42,14 @@ void HIValidationGroup::validateButtonCallback(Fl_Widget* widget, void* data)
 			fl_alert("Error occured");
 		}
 	}
-	
+
 }
 
 task<void> HIValidationGroup::getRequestTask()
 {
 	return create_task([&]
 	{
-		http_client client(conversions::to_string_t(Configuration::Instance()->getServerUrl()));
+		http_client client(conversions::to_string_t(Configuration::Instance()->ServerUrl()));
 		uri_builder builder = uri_builder(U("api"));
 		builder.append(U("external"));
 		builder.append(U("validateemailedlicense"));
@@ -72,7 +57,7 @@ task<void> HIValidationGroup::getRequestTask()
 		builder.append_query(U("activationKey"), conversions::to_string_t(string(this->activationKeyInput->value())), true);
 		builder.append_query(U("hardwareKey"), conversions::to_string_t(string(this->hardwareKeyInput->value())), true);
 		builder.append_query(U("productId"), conversions::to_string_t(string(this->productIdInput->value())), true);
-		
+
 		return client.request(methods::GET, builder.to_string());
 	}).then([&](http_response response)
 	{
@@ -104,9 +89,9 @@ task<void> HIValidationGroup::getRequestTask()
 				this->messageResult = conversions::to_utf8string(jsonValue.at(L"message").serialize());
 			}
 		}
-		else if(this->messageType == Info)
+		else if (this->messageType == Info)
 		{
-			LicenseFileManager::writeLicenseFile(jsonValue);
+			LicenseFileManager::writeHiLicenseFile(jsonValue);
 			this->messageResult = "Validation Key is valid";
 		}
 	});
@@ -133,7 +118,7 @@ bool HIValidationGroup::validateInputs()
 		return false;
 	}
 
-	return true;	
+	return true;
 }
 
 void HIValidationGroup::showMessage()

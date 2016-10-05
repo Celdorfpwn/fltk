@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\HI">
+      <UniqueIdentifier>{cfad7333-5b8c-4e5b-9f47-077974e53d60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HD">
+      <UniqueIdentifier>{1bee38a8-a6d4-4efa-b737-a22bae10ab3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HI">
+      <UniqueIdentifier>{a2dc8ef4-62cc-41ae-af3f-619ade7fa9fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HD">
+      <UniqueIdentifier>{6af49a7f-7ab1-4b3c-ad8b-fdb07c838b85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -33,15 +45,6 @@
     <ClInclude Include="ChoiceWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HardwareIndependentWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HIRegistrationGroup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HIValidationGroup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,14 +54,38 @@
     <ClInclude Include="Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HardwareIndependentWindow.h">
+      <Filter>Header Files\HI</Filter>
+    </ClInclude>
     <ClInclude Include="HILicenseFileReader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\HI</Filter>
     </ClInclude>
     <ClInclude Include="HIVerifyGroup.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\HI</Filter>
     </ClInclude>
     <ClInclude Include="HIOfflineValidationGroup.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\HI</Filter>
+    </ClInclude>
+    <ClInclude Include="HIRegistrationGroup.h">
+      <Filter>Header Files\HI</Filter>
+    </ClInclude>
+    <ClInclude Include="HIValidationGroup.h">
+      <Filter>Header Files\HI</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareIndependent.h">
+      <Filter>Header Files\HI</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareDependentWindow.h">
+      <Filter>Header Files\HD</Filter>
+    </ClInclude>
+    <ClInclude Include="HardwareDependent.h">
+      <Filter>Header Files\HD</Filter>
+    </ClInclude>
+    <ClInclude Include="HDRegisterGroup.h">
+      <Filter>Header Files\HD</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGroup.h">
+      <Filter>Header Files\HI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -71,15 +98,6 @@
     <ClCompile Include="ChoiceWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HardwareIndependentWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HIRegistrationGroup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HIValidationGroup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LicenseFileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,12 +105,30 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HILicenseFileReader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\HI</Filter>
     </ClCompile>
-    <ClCompile Include="HIVerifyGroup.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="HardwareIndependentWindow.cpp">
+      <Filter>Source Files\HI</Filter>
     </ClCompile>
     <ClCompile Include="HIOfflineValidationGroup.cpp">
+      <Filter>Source Files\HI</Filter>
+    </ClCompile>
+    <ClCompile Include="HIRegistrationGroup.cpp">
+      <Filter>Source Files\HI</Filter>
+    </ClCompile>
+    <ClCompile Include="HIValidationGroup.cpp">
+      <Filter>Source Files\HI</Filter>
+    </ClCompile>
+    <ClCompile Include="HIVerifyGroup.cpp">
+      <Filter>Source Files\HI</Filter>
+    </ClCompile>
+    <ClCompile Include="HardwareDependentWindow.cpp">
+      <Filter>Source Files\HD</Filter>
+    </ClCompile>
+    <ClCompile Include="HDRegisterGroup.cpp">
+      <Filter>Source Files\HD</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGroup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

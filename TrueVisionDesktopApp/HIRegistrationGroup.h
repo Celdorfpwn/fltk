@@ -10,17 +10,13 @@ using namespace pplx;
 using namespace std;
 
 
-class HIRegistrationGroup : public Fl_Group
+class HIRegistrationGroup : public BaseGroup
 {
 public:
 	HIRegistrationGroup(int x, int y, const char* t);
 	~HIRegistrationGroup();
 
 private:
-	Fl_Box* usernameLabel;
-	Fl_Box* emailLabel;
-	Fl_Box* productIdLabel;
-
 	Fl_Input* usernameInput;
 	Fl_Input* emailInput;
 	Fl_Input* productIdInput;

@@ -9,23 +9,25 @@ Configuration* Configuration::instance;
 Configuration::Configuration()
 {
 	ifstream file("Configuration.cfg");
-	file >> this->server_url;
-	file >> this->default_productId;
-	file >> this->default_hardwareId;
+	string skip;
+	file >> skip >> skip >> this->server_url;
+	file >> skip >> skip >> this->default_productId;
+	file >> skip >> skip >> this->default_hardwareId;
 	file.close();
 }
 
-string Configuration::getDefaultProductId()
+string Configuration::HIProductId()
 {
 	return this->default_productId;
 }
 
-string Configuration::getServerUrl()
+string Configuration::ServerUrl()
 {
 	return this->server_url;
 }
 
-string Configuration::getDefaultHardwareId()
+
+string Configuration::HIHardwareId()
 {
 	return this->default_hardwareId;
 }
@@ -44,5 +46,7 @@ Configuration::~Configuration()
 {
 
 }
+
+
 
 

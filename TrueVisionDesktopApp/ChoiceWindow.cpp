@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ChoiceWindow.h"
-#include "HardwareIndependentWindow.h"
+#include "HardwareIndependent.h"
 
 
 
@@ -40,7 +40,8 @@ void ChoiceWindow::initializeComponent()
 
 void ChoiceWindow::hdProductButtonCallback(Fl_Widget *widget, void*)
 {
-
+	Fl_Window *window = HardwareDependentWindow::Instance();
+	window->show();
 }
 void ChoiceWindow::hiProductButtonCallback(Fl_Widget *widget, void*)
 {
