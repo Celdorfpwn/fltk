@@ -3,7 +3,7 @@
 
 HardwareDependentWindow* HardwareDependentWindow::instance;
 
-HardwareDependentWindow::HardwareDependentWindow(): Fl_Window(490, 500, "Hardware Dependent Product")
+HardwareDependentWindow::HardwareDependentWindow(): Fl_Window(490, 600, "Hardware Dependent Product")
 {
 	this->initializeComponents();
 }
@@ -45,7 +45,10 @@ void HardwareDependentWindow::clearGroups()
 
 void HardwareDependentWindow::addRegistrationGroup()
 {
-
+	this->begin();
+	this->currentGroup = new HDRegisterGroup(50, 100, "Registration Form");
+	this->end();
+	this->redraw();
 }
 
 void HardwareDependentWindow::addCheckGroup()
@@ -55,7 +58,8 @@ void HardwareDependentWindow::addCheckGroup()
 
 void HardwareDependentWindow::registerButtonCallback(Fl_Widget* widget, void* data)
 {
-
+	HardwareDependentWindow *window = (HardwareDependentWindow*)data;
+	window->addRegistrationGroup();
 }
 
 void HardwareDependentWindow::checkButtonCallback(Fl_Widget* widget, void* data)

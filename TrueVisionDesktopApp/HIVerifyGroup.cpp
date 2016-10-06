@@ -25,8 +25,6 @@ void HIVerifyGroup::initializeComponent()
 	this->licenseIdInput = BaseGroup::createInput(HILicenseFileReader::Instance()->getLicenseId().c_str(), "License Id:", false);
 	this->licenseKeyInput = BaseGroup::createInput(HILicenseFileReader::Instance()->getLicenseKey().c_str(), "License Key:", false);
 
-
-
 	this->verifyButton = BaseGroup::createCenterButton("Verify");
 	this->verifyButton->callback(this->verifyButtonCallback, (void*)this);
 	this->end();

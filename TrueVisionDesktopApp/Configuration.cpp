@@ -13,6 +13,8 @@ Configuration::Configuration()
 	file >> skip >> skip >> this->server_url;
 	file >> skip >> skip >> this->default_productId;
 	file >> skip >> skip >> this->default_hardwareId;
+	file >> skip >> skip >> this->hd_productId;
+	file >> skip >> skip >> this->hd_hardwareKey;
 	file.close();
 }
 
@@ -30,6 +32,16 @@ string Configuration::ServerUrl()
 string Configuration::HIHardwareId()
 {
 	return this->default_hardwareId;
+}
+
+string Configuration::HDProductId()
+{
+	return this->hd_productId;
+}
+
+string Configuration::HDHardwareId()
+{
+	return this->hd_hardwareKey;
 }
 
 
