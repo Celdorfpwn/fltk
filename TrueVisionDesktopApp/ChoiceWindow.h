@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 
-
 class ChoiceWindow : public Fl_Window
 {
 public:
